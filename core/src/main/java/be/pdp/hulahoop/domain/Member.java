@@ -3,6 +3,7 @@ package be.pdp.hulahoop.domain;
 import com.google.common.base.Objects;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -21,19 +22,26 @@ public class Member extends DomainObject{
     @Column(name = "NAME")
     private String name;
 
+    @NotNull
     @Column(name = "NICK_NAME")
     private String nickName;
 
+    @NotNull
+    @Enumerated(EnumType.STRING)
     private Sex sex;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "GENDER_ROLE")
     private GenderRole genderRole;
 
     @OneToOne
     private Body body;
 
-    @OneToMany
-    @JoinColumn(name="FAVORITE_ID", referencedColumnName="ID")
+    @ManyToMany
+    @JoinTable(
+            name="MEMBER_FAVORITES",
+            joinColumns=@JoinColumn(name="MEMBER", referencedColumnName="ID"),
+            inverseJoinColumns=@JoinColumn(name="FAVORITE", referencedColumnName="ID"))
     private List<Member> favorites;
 
     @OneToOne
