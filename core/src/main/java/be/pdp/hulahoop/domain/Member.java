@@ -36,6 +36,19 @@ public class Member extends DomainObject{
     @JoinColumn(name="FAVORITE_ID", referencedColumnName="ID")
     private List<Member> favorites;
 
+    @OneToOne
+    private Affiliation affiliation;
+
+    private List<CommunicationChannel> communicationChannels;
+
+    private SexualPreference sexualPreference;
+
+    private FamilyContext familyContext;
+
+    private Personality personality;
+
+    private LocationContext locationContext;
+
     @Override
     public boolean equals(Object object) {
         if (object == null) {

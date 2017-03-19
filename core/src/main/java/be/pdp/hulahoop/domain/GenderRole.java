@@ -5,7 +5,7 @@ package be.pdp.hulahoop.domain;
  */
 public enum GenderRole {
 
-    MAN,
+    TRANS_MALE,
 
-    WOMAN;
+    TRANS_WOMAN;
 }
