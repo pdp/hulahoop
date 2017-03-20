@@ -1,5 +1,6 @@
 package be.pdp.hulahoop.config;
 
+import be.pdp.hulahoop.dao.MemberRepository;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
@@ -33,9 +34,10 @@ public class HulahoopConfig {
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUrl("jdbc:h2:mem:hulahoop");
+        dataSource.setUrl("jdbc:h2:mem:hulahoop;DB_CLOSE_ON_EXIT=FALSE\n");
         dataSource.setUsername("hula");
         dataSource.setPassword("hoop");
+        dataSource.setDriverClassName("org.h2.Driver");
         return dataSource;
     }
 
@@ -76,4 +78,8 @@ public class HulahoopConfig {
     }
 
 
+    @Bean
+    public MemberRepository memberRepository() {
+        
+    }
 }
