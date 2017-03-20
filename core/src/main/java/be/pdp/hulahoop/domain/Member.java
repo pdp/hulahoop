@@ -26,7 +26,6 @@ public class Member extends DomainObject{
     @Column(name = "NICK_NAME")
     private String nickName;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
     private Sex sex;
 
@@ -34,8 +33,9 @@ public class Member extends DomainObject{
     @Column(name = "GENDER_ROLE")
     private GenderRole genderRole;
 
-    @OneToOne
-    private Body body;
+//    @OneToOne
+//    @Embedded
+//    private Body body;
 
     @ManyToMany
     @JoinTable(
@@ -44,18 +44,18 @@ public class Member extends DomainObject{
             inverseJoinColumns=@JoinColumn(name="FAVORITE", referencedColumnName="ID"))
     private List<Member> favorites;
 
-    @OneToOne
-    private Affiliation affiliation;
-
-    private List<CommunicationChannel> communicationChannels;
-
-    private SexualPreference sexualPreference;
-
-    private FamilyContext familyContext;
-
-    private Personality personality;
-
-    private LocationContext locationContext;
+//    @OneToOne
+//    private Affiliation affiliation;
+//
+//    private List<CommunicationChannel> communicationChannels;
+//
+//    private SexualPreference sexualPreference;
+//
+//    private FamilyContext familyContext;
+//
+//    private Personality personality;
+//
+//    private LocationContext locationContext;
 
     @Override
     public boolean equals(Object object) {

@@ -8,5 +8,7 @@ public class HulahoopApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HulahoopApplication.class, args);
+
+
 	}
 }
