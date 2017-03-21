@@ -1,4 +1,4 @@
-package be.pdp.hulahoop.domain;
+package be.pdp.hulahoop;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

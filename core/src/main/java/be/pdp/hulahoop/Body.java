@@ -1,8 +1,6 @@
-package be.pdp.hulahoop.domain;
+package be.pdp.hulahoop;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 /**
  * Created by peterdp on 19/03/2017.

@@ -1,4 +1,4 @@
-package be.pdp.hulahoop.domain;
+package be.pdp.hulahoop;
 
 /**
  * Created by peterdp on 19.03.17.

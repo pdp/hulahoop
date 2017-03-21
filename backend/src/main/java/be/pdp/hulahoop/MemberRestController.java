@@ -14,18 +14,11 @@ import java.util.Date;
 @RestController
 public class MemberRestController {
 
-
-    @Autowired
-    private MemberRepository memberRepository;
-
-
     @RequestMapping("/greeting")
     public String getName(String name) {
 
         Member member = new Member();
         member.setCreatedOn(new Date());
-        memberRepository.save(member);
-        memberRepository.findAll();
         return member.getCreatedOn().toString();
     }
 }

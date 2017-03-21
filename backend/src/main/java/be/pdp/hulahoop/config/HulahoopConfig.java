@@ -25,8 +25,8 @@ import java.util.Properties;
  * Created by peterdp on 20/03/2017.
  */
 @Configuration
-@EnableJpaRepositories
-@EnableSpringDataWebSupport
+@ComponentScan("be.pdp.hulahoop")
+@EnableJpaRepositories("be.pdp.hulahoop.dao")
 @EnableTransactionManagement
 @PropertySource("classpath:backend.properties")
 public class HulahoopConfig {
@@ -34,10 +34,10 @@ public class HulahoopConfig {
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUrl("jdbc:h2:mem:hulahoop;DB_CLOSE_ON_EXIT=FALSE\n");
-        dataSource.setUsername("hula");
-        dataSource.setPassword("hoop");
-        dataSource.setDriverClassName("org.h2.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/hulahoop");
+        dataSource.setUsername("dev");
+        dataSource.setPassword("dev");
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         return dataSource;
     }
 
@@ -50,25 +50,27 @@ public class HulahoopConfig {
     @Bean
     public JpaVendorAdapter jpaVendorAdapter(Database database) {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-        database = Database.H2;
+        database = Database.MYSQL;
         adapter.setDatabase(database);
         adapter.setShowSql(true);
         return adapter;
+
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter);
-        entityManagerFactoryBean.setPackagesToScan("be.pdp.core");
+        entityManagerFactoryBean.setPackagesToScan("be.pdp.hulahoop.domain");
         entityManagerFactoryBean.setJpaProperties(properties());
         return entityManagerFactoryBean;
     }
 
     private Properties properties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.hbm2ddl.auto", "none");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return properties;
     }
 
@@ -77,9 +79,4 @@ public class HulahoopConfig {
         return new JpaTransactionManager(entityManagerFactory);
     }
 
-
-    @Bean
-    public MemberRepository memberRepository() {
-        
-    }
 }

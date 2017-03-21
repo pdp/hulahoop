@@ -1,4 +1,4 @@
-package be.pdp.hulahoop.domain;
+package be.pdp.hulahoop;
 
 import java.util.List;
 
