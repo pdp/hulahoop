@@ -9,11 +9,6 @@ import java.util.Date;
 @MappedSuperclass
 public abstract class DomainObject {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private Long id;
-
     @Version
     private Integer version;
 
@@ -73,12 +68,5 @@ public abstract class DomainObject {
         this.lastModifiedBy = lastModifiedBy;
     }*/
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
 }

@@ -34,23 +34,22 @@ public class HulahoopConfig {
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/hulahoop");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/hulahoop");
         dataSource.setUsername("dev");
         dataSource.setPassword("dev");
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setDriverClassName("org.postgresql.Driver");
         return dataSource;
     }
 
     @Bean
     public Database database() {
-        return Database.MYSQL;
+        return Database.POSTGRESQL;
     }
-
 
     @Bean
     public JpaVendorAdapter jpaVendorAdapter(Database database) {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-        database = Database.MYSQL;
+        database = Database.POSTGRESQL;
         adapter.setDatabase(database);
         adapter.setShowSql(true);
         return adapter;
@@ -70,7 +69,8 @@ public class HulahoopConfig {
     private Properties properties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "none");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL94Dialect");
+//        properties.setProperty("hibernate.default_schema", "")
         return properties;
     }
 

@@ -6,7 +6,10 @@ import be.pdp.hulahoop.Sex;
 import com.google.common.base.Objects;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import static java.time.LocalDate.*;
 
 /**
  * Created by peterdp on 19.03.17.
@@ -15,9 +18,14 @@ import javax.validation.constraints.NotNull;
 @Table(name = "Member")
 public class Member extends DomainObject {
 
+    @Id
+    @SequenceGenerator(name = "MEMBER_GEN", sequenceName = "MEMBER_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MEMBER_GEN")
+    private Long id;
+
+    //TODO move to affiliation object?
     @Column(name = "MEMBERSHIP_NUMBER")
     private String membershipNumber;
-
 
     @Column(name = "FIRST_NAME")
     private String firstName;
@@ -28,16 +36,17 @@ public class Member extends DomainObject {
     @Column(name = "NICK_NAME")
     private String nickName;
 
-//    @Enumerated(EnumType.STRING)
-//    private Sex sex;
-//
-//    @Enumerated(EnumType.STRING)
-//    @Column(name = "GENDER_ROLE")
-//    private GenderRole genderRole;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "GENDER_ROLE")
+    private GenderRole genderRole;
 
-//    @OneToOne
-//    @Embedded
-//    private Body body;
+    @Embedded
+    private Body body;
+
+    public Member() {
+        String currentYear = String.valueOf(now().getYear());
+        membershipNumber = currentYear + "-" + String.format("%05d", getId());
+    }
 
 //    @ManyToMany
 //    @JoinTable(
@@ -58,11 +67,15 @@ public class Member extends DomainObject {
 //    private Personality personality;
 //
 //    private LocationContext locationContext;    @Enumerated(EnumType.STRING)
-    private Sex sex;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "GENDER_ROLE")
-    private GenderRole genderRole;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getMembershipNumber() {
         return membershipNumber;
@@ -95,23 +108,22 @@ public class Member extends DomainObject {
     public void setNickName(String nickName) {
         this.nickName = nickName;
     }
-//
-//    public Sex getSex() {
-//        return sex;
-//    }
-//
-//    public void setSex(Sex sex) {
-//        this.sex = sex;
-//    }
-//
-//    public GenderRole getGenderRole() {
-//        return genderRole;
-//    }
-//
-//    public void setGenderRole(GenderRole genderRole) {
-//        this.genderRole = genderRole;
-//    }
 
+    public GenderRole getGenderRole() {
+        return genderRole;
+    }
+
+    public void setGenderRole(GenderRole genderRole) {
+        this.genderRole = genderRole;
+    }
+
+    public Body getBody() {
+        return body;
+    }
+
+    public void setBody(Body body) {
+        this.body = body;
+    }
 
     @Override
     public boolean equals(Object object) {
