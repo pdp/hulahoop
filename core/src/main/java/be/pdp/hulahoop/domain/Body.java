@@ -2,6 +2,7 @@ package be.pdp.hulahoop.domain;
 
 import be.pdp.hulahoop.DomainObject;
 import be.pdp.hulahoop.Sex;
+import org.springframework.stereotype.Controller;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
