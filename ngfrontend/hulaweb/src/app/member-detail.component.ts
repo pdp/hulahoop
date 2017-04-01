@@ -6,6 +6,7 @@ import {Member} from "./member";
   templateUrl: './member-detail.component.html'
 })
 
+
 export class MemberDetailComponent {
   @Input() member: Member;
 }
