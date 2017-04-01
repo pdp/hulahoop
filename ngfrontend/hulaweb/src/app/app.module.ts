@@ -2,19 +2,44 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule }   from '@angular/router';
 
-import { AppComponent } from './app.component';
+import {HulawebComponent} from "./hulaweb.component";
+import {MembersComponent} from "./members.component";
+import {MemberDetailComponent} from './member-detail.component';
+import {MemberService} from "./member.service";
+import {DashboardComponent} from "./dashboard.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    HulawebComponent,
+    MemberDetailComponent,
+    MembersComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      {
+        path: 'members',
+        component: MembersComponent
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+      {
+        path: '',
+        redirectTo: '/dashboard',
+        pathMatch: 'full'
+      },
+
+    ])
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [MemberService],
+  bootstrap: [HulawebComponent]
 })
+
 export class AppModule { }

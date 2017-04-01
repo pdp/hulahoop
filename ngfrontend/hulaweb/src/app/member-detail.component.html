@@ -1,0 +1,14 @@
+<div *ngIf="member">
+  <div>
+    <label for="membershipNumber">Membership number: </label>
+    <label id="membershipNumber">{{member.membershipNumber}}</label>
+  </div>
+  <div>
+    <label for="firstNameInput">Firstname: </label>
+    <input id="firstNameInput" [(ngModel)]="member.firstName" placeholder="firstname"/>
+  </div>
+  <div>
+    <label for="nameInput">Name: </label>
+    <input id="nameInput" [(ngModel)]="member.name" placeholder="name"/>
+  </div>
+</div>

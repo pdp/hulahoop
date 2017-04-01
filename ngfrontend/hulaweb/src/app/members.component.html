@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let member of members" (click)="onSelect(member)">
+    <span>{{member.firstName}}</span> <span>{{member.name}}</span>
+  </li>
+</ul>
