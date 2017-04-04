@@ -9,13 +9,15 @@ import {MembersComponent} from "./members.component";
 import {MemberDetailComponent} from './member-detail.component';
 import {MemberService} from "./member.service";
 import {DashboardComponent} from "./dashboard.component";
+import { MemberRegistrationFormComponent } from './member-registration-form/member-registration-form.component';
 
 @NgModule({
   declarations: [
-    HulawebComponent,
     MemberDetailComponent,
     MembersComponent,
-    DashboardComponent
+    HulawebComponent,
+    DashboardComponent,
+    MemberRegistrationFormComponent
   ],
   imports: [
     BrowserModule,

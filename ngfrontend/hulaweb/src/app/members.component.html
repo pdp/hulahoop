@@ -1,6 +1,6 @@
 <ul>
-  <li *ngFor="let member of members" (click)="onSelect(member)">
+  <li *ngFor="let member of members" (click)="onSelect(member)" class="list-group-item list-group-item-success">
     <span>{{member.firstName}}</span> <span>{{member.name}}</span>
   </li>
+  <member-detail [member]="member"></member-detail>
 </ul>
-<member-detail [member] = "member"></member-detail>

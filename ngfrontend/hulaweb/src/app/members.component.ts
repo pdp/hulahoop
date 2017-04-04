@@ -1,4 +1,4 @@
-import {Component, Directive, OnInit, Output} from '@angular/core';
+import {Component, Directive, EventEmitter, OnInit, Output} from '@angular/core';
 import {Member} from './member';
 import {MemberService} from './member.service';
 
@@ -12,7 +12,8 @@ import {MemberService} from './member.service';
 export class MembersComponent implements OnInit {
 
   members : Member[];
-  @Output() member: Member;
+  member: Member;
+  @Output() passMember: EventEmitter<Member> = new EventEmitter<Member>();
 
   constructor(private memberService : MemberService) {
 
@@ -28,6 +29,8 @@ export class MembersComponent implements OnInit {
   }
 
   onSelect(member : Member): void {
+    console.log("The member is propagated");
     this.member = member;
+    this.passMember.emit(member);
   }
 }

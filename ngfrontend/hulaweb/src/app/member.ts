@@ -1,5 +1,7 @@
 export class Member {
-  membershipNumber: string;
-  firstName: string;
-  name: string;
+  constructor(
+    public membershipNumber: string,
+    public firstName: string,
+    public name: string
+  ) {}
 }

@@ -1,4 +1,5 @@
 import {Component, Input} from "@angular/core";
+import {Member} from "./member";
 
 @Component({
   selector: 'hulaweb',
@@ -8,5 +9,11 @@ import {Component, Input} from "@angular/core";
 
 
 export class HulawebComponent {
+  @Input() member : Member;
+  @Input() passMember;
 
+  receiveMember(member) {
+    console.log("testtesttestees");
+    this.member = member;
+  }
 }
