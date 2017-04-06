@@ -1,5 +1,5 @@
 import {Component, Directive, EventEmitter, OnInit, Output} from '@angular/core';
-import {Member} from './member';
+import {Member} from './domain/Member';
 import {MemberService} from './member.service';
 
 @Component({

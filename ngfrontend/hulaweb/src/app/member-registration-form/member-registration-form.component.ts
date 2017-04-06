@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Member} from "../member";
+import {Member} from "../domain/Member";
+import {Account} from "../domain/Account";
+import {LocationContext} from "../domain/LocationContext";
 
 @Component({
   selector: 'member-registration-form',
@@ -11,7 +13,7 @@ export class MemberRegistrationFormComponent  {
 
   sex = ['Female', 'Male'];
 
-  member = new Member('ABC', 'Peter', 'De Permentier');
+  member = new Member('ABC', 'Peter', 'De Permentier', new Account('petermans', 'xxx'), new LocationContext('9120', 'Beveren-Waas', 'Oost-Vlaanderen'));
 
   submitted = false;
 

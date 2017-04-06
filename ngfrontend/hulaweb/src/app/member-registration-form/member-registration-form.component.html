@@ -1,20 +1,39 @@
 <div class="container">
   <h1>Member registration</h1>
   <form>
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" [(ngModel)]="member.name" id="name" required name="name">
+    <div class="form-group form-inline margin">
+      <label for="userName" class="label">Username</label>
+      <input type="text" class="form-control form-control-sm col-sm-4" [(ngModel)]="member.account.userName" id="userName" required name="userName">
     </div>
-    <div class="form-group">
-      <label for="firstName">First name</label>
-      <input type="text" class="form-control" id="firstName">
+    <div class="form-group form-inline margin">
+      <label for="name" class="label">Name</label>
+      <input type="text" class="form-control form-control-sm col-sm-4" [(ngModel)]="member.name" id="name" required name="name">
+    </div>
+    <div class="form-group form-inline margin">
+      <label for="firstName" class="label">First name</label>
+      <input type="text" class="form-control form-control-sm col-sm-4" [(ngModel)]="member.firstName" id="firstName" required name="firstName">
+    </div>
+    <div class="form-group form-inline margin">
+      <label for="zipCode" class="label">Zipcode</label>
+      <input type="text" class="form-control form-control-sm col-sm-4" [(ngModel)]="member.locationContext.zipCode" id="zipCode" required name="zipCode">
+    </div>
+    <div class="form-group form-inline margin">
+      <label for="municipality" class="label">Municipality</label>
+      <input type="text" class="form-control form-control-sm col-sm-4" [(ngModel)]="member.locationContext.municipality" id="municipality" required name="municipality">
+    </div>
+    <div class="form-group form-inline margin">
+      <label for="province" class="label">Province</label>
+      <input type="text" class="form-control form-control-sm col-sm-4" [(ngModel)]="member.locationContext.province" id="province" required name="province">
     </div>
     <div>
-      <label for="sex">Sex</label>
-      <select class="form-control" id="sex" required>
+      <div class="form-group form-inline">
+      <label for="sex" class="label">Sex</label>
+      <select class="form-control form-control-sm col-sm-4" id="sex" required>
         <option *ngFor="let sex of sex" [value]="sex">{{sex}}</option>
       </select>
+      </div>
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success col-sm-2">Submit</button>
+
   </form>
 </div>

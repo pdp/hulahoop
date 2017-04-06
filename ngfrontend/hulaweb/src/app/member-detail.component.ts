@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
-import {Member} from "./member";
+import {Member} from "./domain/Member";
 
 @Component( {
   selector: 'member-detail',
