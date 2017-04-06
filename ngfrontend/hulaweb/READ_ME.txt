@@ -12,3 +12,9 @@ ng new <name of the ng project>
 
 
 ng serve to start your app and keep it running in the browser
+
+
+deploy to github pages
+npm i -g angular-cli-ghpages
+
+ng build --prod --base-href "https://pdp.github.io/hulahoop/"
