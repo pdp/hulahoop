@@ -9,6 +9,7 @@ import com.google.common.base.Objects;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import static java.time.LocalDate.*;
 
@@ -45,7 +46,7 @@ public class Member extends DomainObject {
 
     public Member() {
         String currentYear = String.valueOf(now().getYear());
-        membershipNumber = currentYear + "-" + String.format("%05d", getId());
+        membershipNumber = currentYear + "-" + UUID.randomUUID();
     }
 
 //    @ManyToMany

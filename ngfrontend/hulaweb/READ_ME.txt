@@ -22,7 +22,7 @@ ng build --prod --base-href "https://pdp.github.io/hulahoop/"
 Install rest stuff (mapping json)
 npm install rxjs
 
-Install autocomplete functionality
-npm install primeng --save
-npm install @angular/animations --save
+Random uuid generator
+npm install angular2-uuid --save
 
+npm install node-sass sass-loader raw-loader --save

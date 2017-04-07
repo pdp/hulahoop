@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {APP_INITIALIZER, Component, OnInit} from '@angular/core';
 import {Member} from "../domain/Member";
 import {Account} from "../domain/Account";
 import {LocationContext} from "../domain/LocationContext";
+import {MemberService} from "../service/member.service";
+import {Body} from "../domain/Body";
+import {UUID} from "angular2-uuid";
 
 @Component({
   selector: 'member-registration-form',
@@ -11,15 +14,27 @@ import {LocationContext} from "../domain/LocationContext";
 
 export class MemberRegistrationFormComponent  {
 
-  sex = ['Female', 'Male'];
+  member : Member;
+
+  constructor(private memberService: MemberService) {
+    this.initializeMember();
+  }
+
+  sex = ['FEMALE', 'MALE'];
 
   province = ['Antwerpen', 'Oost-Vlaanderen', 'West-Vlaanderen', 'Limburg', 'Vlaams-Brabant'];
 
-  member = new Member('ABC', 'Peter', 'De Permentier', new Account('petermans', 'xxx'), new LocationContext('9120', 'Beveren-Waas', 'Oost-Vlaanderen'));
-
   submitted = false;
 
-  onSubmit() {this.submitted = true;}
+  onSubmit() {
+    this.memberService.createMember(this.member);
+    this.initializeMember();
+  }
 
-  get diagnostic() { return JSON.stringify(this.member); }
+  initializeMember() {
+    this.member = new Member(UUID.UUID(), '', '', new Account('', ''), new LocationContext('', '', ''));
+    this.member.nickName = 'test';
+    this.member.genderRole = "TRANS_MALE";
+    this.member.body = new Body("MALE");
+  }
 }

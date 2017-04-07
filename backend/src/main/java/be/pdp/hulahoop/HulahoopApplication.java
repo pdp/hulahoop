@@ -33,6 +33,66 @@ public class HulahoopApplication {
 			member.setBody(body);
 			memberRepository.save(member);
 
+			member = new Member();
+			member.setFirstName("Julien");
+			member.setName("Vande perre");
+			member.setNickName("Choelie");
+			member.setGenderRole(GenderRole.TRANS_WOMAN);
+			body = new Body();
+			body.setWeight((short) 90);
+			body.setLength((short) 180);
+			body.setSex(Sex.FEMALE);
+			member.setBody(body);
+			memberRepository.save(member);
+
+			 member = new Member();
+			member.setFirstName("Didier");
+			member.setName("Van de Casteele");
+			member.setNickName("Dieke");
+			member.setGenderRole(GenderRole.TRANS_MALE);
+			 body = new Body();
+			body.setWeight((short) 85);
+			body.setLength((short) 172);
+			body.setSex(Sex.MALE);
+			member.setBody(body);
+			memberRepository.save(member);
+
+			 member = new Member();
+			member.setFirstName("Kristof");
+			member.setName("Camelbeke");
+			member.setNickName("Camel");
+			member.setGenderRole(GenderRole.TRANS_MALE);
+			 body = new Body();
+			body.setWeight((short) 85);
+			body.setLength((short) 172);
+			body.setSex(Sex.MALE);
+			member.setBody(body);
+			memberRepository.save(member);
+
+			member = new Member();
+			member.setFirstName("Peter");
+			member.setName("Post");
+			member.setNickName("Sperrie");
+			member.setGenderRole(GenderRole.TRANS_MALE);
+			 body = new Body();
+			body.setWeight((short) 85);
+			body.setLength((short) 172);
+			body.setSex(Sex.MALE);
+			member.setBody(body);
+			memberRepository.save(member);
+
+			member = new Member();
+			member.setFirstName("Peter");
+			member.setName("Post");
+			member.setNickName("Sperrie");
+			member.setGenderRole(GenderRole.TRANS_MALE);
+			body = new Body();
+			body.setWeight((short) 85);
+			body.setLength((short) 172);
+			body.setSex(Sex.MALE);
+			member.setBody(body);
+			memberRepository.save(member);
+
 			List<Member> members = memberRepository.findAll();
 			for(Member m : members) {
 				System.out.println(m.getNickName());

@@ -68,7 +68,7 @@ public class HulahoopConfig {
 
     private Properties properties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        properties.setProperty("hibernate.hbm2ddl.auto", "none");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL94Dialect");
 //        properties.setProperty("hibernate.default_schema", "")
         return properties;

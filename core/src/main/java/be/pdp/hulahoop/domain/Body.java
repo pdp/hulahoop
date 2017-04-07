@@ -16,6 +16,7 @@ import javax.persistence.Enumerated;
 public class Body {
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "SEX")
     private Sex sex;
 
     //TODO need to use units like kilos, cm etc

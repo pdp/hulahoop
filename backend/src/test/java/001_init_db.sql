@@ -1,6 +1,7 @@
-DROP INDEX IF EXISTS idx_membership_number;
 DROP TABLE IF EXISTS Member;
+DROP TABLE IF EXISTS Geographical_Data;
 DROP SEQUENCE IF EXISTS MEMBER_SEQ;
+DROP SEQUENCE IF EXISTS GEO_DATA_SEQ;
 
 CREATE TABLE Member (
   ID INTEGER NOT NULL ,
@@ -15,15 +16,14 @@ CREATE TABLE Member (
   CREATED_ON TIMESTAMP NULL DEFAULT NULL,
   LASTMODIFIED_ON TIMESTAMP NULL DEFAULT NULL,
   VERSION BIGINT,
-  PRIMARY KEY(ID)
+  PRIMARY KEY(ID),
+  UNIQUE (MEMBERSHIP_NUMBER)
 );
-
-CREATE UNIQUE INDEX idx_membership_number ON Member (MEMBERSHIP_NUMBER);
 
 CREATE SEQUENCE MEMBER_SEQ START WITH 1;
 
 
-CREATE TABLE GEOGRAPHICAL_DATA (
+CREATE TABLE Geographical_Data (
   ID INTEGER NOT NULL ,
   ZIPCODE VARCHAR(60),
   MUNICIPALITY VARCHAR(120),
@@ -39,16 +39,3 @@ CREATE INDEX idx_geo_data_municipality ON GEOGRAPHICAL_DATA (MUNICIPALITY);
 CREATE INDEX idx_geo_data_province ON GEOGRAPHICAL_DATA (PROVINCE);
 
 CREATE SEQUENCE GEO_DATA_SEQ START WITH 1;
-
-INSERT INTO GEOGRAPHICAL_DATA (ID, ZIPCODE, MUNICIPALITY, PROVINCE, VERSION, CREATED_ON, LASTMODIFIED_ON)
-VALUES
-  (1, '2000', 'Antwerpen', 'Antwerpen', 1, current_timestamp, current_timestamp),
-  (1, '2050', 'Linkeroever', 'Antwerpen', 1, current_timestamp, current_timestamp),
-  (1, '2100', 'Deurne', 'Antwerpen', 1, current_timestamp, current_timestamp),
-  (1, '2140', 'Borgerhout', 'Antwerpen', 1, current_timestamp, current_timestamp),
-  (1, '9000', 'Gent', 'Oost-Vlaanderen', 1, current_timestamp, current_timestamp),
-  (1, '3000', 'Leuven', 'Vlaams-Brabant', 1, current_timestamp, current_timestamp),
-  (1, '1060', 'Sint-Gillis', 'Brussel', 1, current_timestamp, current_timestamp),
-  (1, '3500', 'Hasselt', 'Limburg', 1, current_timestamp, current_timestamp),
-  (1, '9120', 'Beveren-Waas', 'Oost-Vlaanderen', 1, current_timestamp, current_timestamp),
-  (1, '8500', 'Kortijk', 'West-Vlaanderen', 1, current_timestamp, current_timestamp);

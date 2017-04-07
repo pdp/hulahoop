@@ -8,11 +8,11 @@ import javax.persistence.*;
  * Created by peterdp on 07/04/2017.
  */
 @Entity
-@Table(name = "GEOGRAPHICAL_DATA")
+@Table(name = "Geographical_Data")
 public class GeographicalData extends DomainObject {
 
     @Id
-    @SequenceGenerator(name = "GEODATA_GEN", sequenceName = "GEODATA_SEQ", allocationSize = 1)
+    @SequenceGenerator(name = "GEODATA_GEN", sequenceName = "GEO_DATA_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GEODATA_GEN")
     private Long id;
 

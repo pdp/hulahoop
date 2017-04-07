@@ -3,10 +3,12 @@ package be.pdp.hulahoop;
 import be.pdp.hulahoop.dao.MemberRepository;
 import be.pdp.hulahoop.domain.Member;
 import com.google.common.collect.Lists;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import org.w3c.dom.stylesheets.LinkStyle;
 
 import javax.inject.Inject;
@@ -28,5 +30,15 @@ public class MemberRestController {
         List<Member> members =  memberRepository.findAll();
 
         return new ResponseEntity(members.toArray(), HttpStatus.OK);
+    }
+
+    @PostMapping(value="/createmember")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<Void> createMember(@RequestBody Member member, UriComponentsBuilder ucBuilder) {
+        memberRepository.save(member);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/member/{membershipNumber}").buildAndExpand(member.getMembershipNumber()).toUri());
+        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 }

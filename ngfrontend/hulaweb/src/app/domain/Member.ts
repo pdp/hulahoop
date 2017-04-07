@@ -1,26 +1,23 @@
 import {Account} from "./Account";
 import {LocationContext} from "./LocationContext";
+import {Body} from "./Body";
 
 export class Member {
-  private membershipNumber: string;
-  private firstName: string;
-  private name: string;
-  private _account: Account;
-  private locationContext : LocationContext;
+  membershipNumber: string;
+  firstName: string;
+  name: string;
+  account: Account;
+  locationContext : LocationContext;
+  nickName: string;
+  genderRole: string;
+  sex: string;
+  body: Body;
 
-  constructor(membershipNumber: string, firstName: string, name: string, account: Account, locationContext: LocationContext) {
+  constructor(membershipNumber, firstName, name, account, locationContext) {
     this.membershipNumber = membershipNumber;
     this.firstName = firstName;
     this.name = name;
-    this._account = account;
+    this.account = account;
     this.locationContext = locationContext;
-  }
-
-  get account(): Account {
-    return this._account;
-  }
-
-  set account(value: Account) {
-    this._account = value;
   }
 }

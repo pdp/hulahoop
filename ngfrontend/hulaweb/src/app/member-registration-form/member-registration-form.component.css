@@ -10,3 +10,13 @@
 .form-group.margin {
   margin-bottom: 5px;
 }
+
+.registrationForm {
+  background-color: beige;
+  padding:2em;
+  border-radius: 25px;
+}
+
+.registrationFormBtnGroup {
+  margin-left:100px;
+}
