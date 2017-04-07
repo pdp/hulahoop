@@ -1,3 +1,16 @@
+<table class="table table-responsive">
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Firstname</th>
+    </tr>
+    <tr *ngFor="let member of members">
+      <td>{{member.name}}</td>
+      <td>{{member.firstName}}</td>
+    </tr>
+  </tbody>
+</table>
+
 <ul>
   <li *ngFor="let member of members" (click)="onSelect(member)" class="list-group-item list-group-item-success">
     <span>{{member.firstName}}</span>&nbsp;<span>{{member.name}}</span>

@@ -1,6 +1,6 @@
 import {Component, Directive, EventEmitter, OnInit, Output} from '@angular/core';
-import {Member} from './domain/Member';
-import {MemberService} from './member.service';
+import {Member} from '../domain/Member';
+import {MemberService} from '../service/member.service';
 
 @Component({
   selector: 'members',
@@ -23,9 +23,8 @@ export class MembersComponent implements OnInit {
     this.getMembers();
   }
 
-  getMembers(): void {
-    this.memberService.getMembers()
-      .then(members => this.members = members);
+  getMembers() {
+    this.memberService.getMembers().subscribe(members => this.members = members);
   }
 
   onSelect(member : Member): void {

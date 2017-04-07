@@ -6,11 +6,7 @@ package be.pdp.hulahoop;
 public class LocationContext {
 
     // should cache this
-    private String zipCode;
-
-    private String municipality;
-
-    private String province;
+    ;
 
     // searching contacts how many km from your own spot
     private short searchRange;

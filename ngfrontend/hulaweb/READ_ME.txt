@@ -18,3 +18,11 @@ deploy to github pages
 npm i -g angular-cli-ghpages
 
 ng build --prod --base-href "https://pdp.github.io/hulahoop/"
+
+Install rest stuff (mapping json)
+npm install rxjs
+
+Install autocomplete functionality
+npm install primeng --save
+npm install @angular/animations --save
+

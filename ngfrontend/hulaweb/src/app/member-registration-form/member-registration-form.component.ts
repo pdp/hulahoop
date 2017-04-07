@@ -13,6 +13,8 @@ export class MemberRegistrationFormComponent  {
 
   sex = ['Female', 'Male'];
 
+  province = ['Antwerpen', 'Oost-Vlaanderen', 'West-Vlaanderen', 'Limburg', 'Vlaams-Brabant'];
+
   member = new Member('ABC', 'Peter', 'De Permentier', new Account('petermans', 'xxx'), new LocationContext('9120', 'Beveren-Waas', 'Oost-Vlaanderen'));
 
   submitted = false;

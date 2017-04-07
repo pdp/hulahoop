@@ -2,6 +2,7 @@ package be.pdp.hulahoop.domain;
 
 import be.pdp.hulahoop.DomainObject;
 import be.pdp.hulahoop.GenderRole;
+import be.pdp.hulahoop.LocationContext;
 import be.pdp.hulahoop.Sex;
 import com.google.common.base.Objects;
 
@@ -23,7 +24,6 @@ public class Member extends DomainObject {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MEMBER_GEN")
     private Long id;
 
-    //TODO move to affiliation object?
     @Column(name = "MEMBERSHIP_NUMBER")
     private String membershipNumber;
 

@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
-import {Member} from "./domain/Member";
+import {Member} from "../domain/Member";
 
 @Component( {
   selector: 'member-detail',
-  templateUrl: './member-detail.component.html'
+  templateUrl: './member-detail.component.html',
+  styleUrls: ['./member-detail.component.css']
 })
 
 

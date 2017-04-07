@@ -1,0 +1,14 @@
+<div *ngIf="member">
+  <div>
+    <label for="membershipNumber">Membership number: </label>
+    <label id="membershipNumber">{{member.membershipNumber}}</label>
+  </div>
+  <div class="form-group form-inline margin">
+    <label for="firstNameInput" class="label text-sm-right">Firstname</label>
+    <input id="firstNameInput" [(ngModel)]="member.firstName" placeholder="firstname" class="form-control form-control-sm col-sm-4"/>
+  </div>
+  <div class="form-group form-inline margin">
+    <label for="nameInput" class="label text-sm-right">Name</label>
+    <input id="nameInput" [(ngModel)]="member.name" placeholder="name" class="form-control form-control-sm col-sm-4"/>
+  </div>
+</div>

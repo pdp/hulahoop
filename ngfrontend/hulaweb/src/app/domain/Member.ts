@@ -8,7 +8,6 @@ export class Member {
   private _account: Account;
   private locationContext : LocationContext;
 
-
   constructor(membershipNumber: string, firstName: string, name: string, account: Account, locationContext: LocationContext) {
     this.membershipNumber = membershipNumber;
     this.firstName = firstName;
