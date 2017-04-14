@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
 
@@ -9,8 +9,9 @@ import {MembersComponent} from "./members/members.component";
 import {MemberDetailComponent} from './member-detail/member-detail.component';
 import {MemberService} from "./service/member.service";
 import {DashboardComponent} from "./dashboard.component";
-import { MemberRegistrationFormComponent } from './member-registration-form/member-registration-form.component';
+import {MemberRegistrationFormComponent} from './member-registration-form/member-registration-form.component';
 import {Ng2BootstrapModule} from "ng2-bootstrap";
+import {MemberRegistrationReactiveFormComponent} from "./member-registration-form/member-registration-reactiveform.component";
 
 @NgModule({
   declarations: [
@@ -18,11 +19,13 @@ import {Ng2BootstrapModule} from "ng2-bootstrap";
     MembersComponent,
     HulawebComponent,
     DashboardComponent,
-    MemberRegistrationFormComponent
+    MemberRegistrationFormComponent,
+    MemberRegistrationReactiveFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     Ng2BootstrapModule.forRoot(),
     RouterModule.forRoot([
@@ -36,7 +39,7 @@ import {Ng2BootstrapModule} from "ng2-bootstrap";
       },
       {
         path: 'registration',
-        component: MemberRegistrationFormComponent
+        component: MemberRegistrationReactiveFormComponent
       },
       {
         path: '',

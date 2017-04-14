@@ -3,6 +3,7 @@ package be.pdp.hulahoop.domain;
 import be.pdp.hulahoop.DomainObject;
 
 import javax.persistence.*;
+import java.sql.Blob;
 
 /**
  * Created by peterdp on 07/04/2017.
@@ -21,6 +22,10 @@ public class GeographicalData extends DomainObject {
     private String municipality;
 
     private String province;
+
+    private String country;
+
+    private Blob flag;
 
     public Long getId() {
         return id;
@@ -52,5 +57,21 @@ public class GeographicalData extends DomainObject {
 
     public void setProvince(String province) {
         this.province = province;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Blob getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Blob flag) {
+        this.flag = flag;
     }
 }

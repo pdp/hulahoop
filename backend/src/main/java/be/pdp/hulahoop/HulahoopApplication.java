@@ -2,6 +2,7 @@ package be.pdp.hulahoop;
 
 import be.pdp.hulahoop.dao.MemberRepository;
 import be.pdp.hulahoop.domain.Body;
+import be.pdp.hulahoop.domain.GeographicalData;
 import be.pdp.hulahoop.domain.Member;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,6 +22,13 @@ public class HulahoopApplication {
 	public CommandLineRunner start(MemberRepository memberRepository) {
 
 		return (args) -> {
+
+			GeographicalData geoData = new GeographicalData();
+			geoData.setZipCode("2000");
+			geoData.setMunicipality("ANTWERPEN");
+			geoData.setProvince("ANTWERPEN");
+			geoData.setCountry("BELGIUM");
+
 			Member member = new Member();
 			member.setFirstName("Peter");
 			member.setName("Post");

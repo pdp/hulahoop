@@ -1,9 +1,9 @@
-import {APP_INITIALIZER, Component, OnInit} from '@angular/core';
+import {Component} from "@angular/core";
 import {Member} from "../domain/Member";
 import {Account} from "../domain/Account";
+import {Body} from "../domain/Body";
 import {LocationContext} from "../domain/LocationContext";
 import {MemberService} from "../service/member.service";
-import {Body} from "../domain/Body";
 import {UUID} from "angular2-uuid";
 
 @Component({
