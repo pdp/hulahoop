@@ -1,10 +1,9 @@
 export class LocationContext {
-  private zipCode: string;
-  private municipality: string;
-  private province: string;
-  private searchRange: number;
+  zipCode: string;
+  municipality: string;
+  province: string;
 
-  constructor(zipCode:string, municipality:string, province: string) {
+  constructor(zipCode, municipality, province) {
     this.zipCode = zipCode;
     this.municipality = municipality;
     this.province = province;

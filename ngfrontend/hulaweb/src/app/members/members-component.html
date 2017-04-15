@@ -10,6 +10,12 @@
     <!--</tr>-->
   <!--</tbody>-->
 <!--</table>-->
+<ul>
+  <li *ngFor="let country of countries">
+    <span>{{country.name}}</span>
+  <img class="image" width="30px" src="{{country.flag}}"/>
+  </li>
+</ul>
 
 <ul>
   <li *ngFor="let member of members" (click)="onSelect(member)" class="list-group-item list-group-item-success">

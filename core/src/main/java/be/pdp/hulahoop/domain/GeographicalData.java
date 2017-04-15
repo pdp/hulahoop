@@ -25,7 +25,7 @@ public class GeographicalData extends DomainObject {
 
     private String country;
 
-    private Blob flag;
+    private Byte[] flag;
 
     public Long getId() {
         return id;
@@ -67,11 +67,11 @@ public class GeographicalData extends DomainObject {
         this.country = country;
     }
 
-    public Blob getFlag() {
+    public Byte[] getFlag() {
         return flag;
     }
 
-    public void setFlag(Blob flag) {
+    public void setFlag(Byte[] flag) {
         this.flag = flag;
     }
 }

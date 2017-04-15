@@ -1,5 +1,6 @@
 package be.pdp.hulahoop;
 
+import be.pdp.hulahoop.dao.GeographicalDataRepository;
 import be.pdp.hulahoop.dao.MemberRepository;
 import be.pdp.hulahoop.domain.Body;
 import be.pdp.hulahoop.domain.GeographicalData;
@@ -19,15 +20,46 @@ public class HulahoopApplication {
 	}
 
 	@Bean
-	public CommandLineRunner start(MemberRepository memberRepository) {
+	public CommandLineRunner start(MemberRepository memberRepository, GeographicalDataRepository geographicalDataRepository) {
 
 		return (args) -> {
-
+			geographicalDataRepository.deleteAll();
 			GeographicalData geoData = new GeographicalData();
 			geoData.setZipCode("2000");
 			geoData.setMunicipality("ANTWERPEN");
 			geoData.setProvince("ANTWERPEN");
 			geoData.setCountry("BELGIUM");
+			geographicalDataRepository.save(geoData);
+
+			geoData = new GeographicalData();
+			geoData.setZipCode("9000");
+			geoData.setMunicipality("GENT");
+			geoData.setProvince("OOST-VLAANDEREN");
+			geoData.setCountry("BELGIUM");
+			geographicalDataRepository.save(geoData);
+
+			geoData = new GeographicalData();
+			geoData.setZipCode("3000");
+			geoData.setMunicipality("LEUVEN");
+			geoData.setProvince("VLAAMS-BRABANT");
+			geoData.setCountry("BELGIUM");
+			geographicalDataRepository.save(geoData);
+
+			geoData = new GeographicalData();
+			geoData.setZipCode("3500");
+			geoData.setMunicipality("HASSELT");
+			geoData.setProvince("LIMBURG");
+			geoData.setCountry("BELGIUM");
+			geographicalDataRepository.save(geoData);
+
+			geoData = new GeographicalData();
+			geoData.setZipCode("8500");
+			geoData.setMunicipality("KORTRIJK");
+			geoData.setProvince("WEST-VLAANDEREN");
+			geoData.setCountry("BELGIUM");
+			geographicalDataRepository.save(geoData);
+
+			memberRepository.deleteAll();
 
 			Member member = new Member();
 			member.setFirstName("Peter");

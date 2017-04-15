@@ -21,6 +21,14 @@
       <label for="municipality" class="label text-sm-right">Municipality</label>
       <input id="municipality" type="text" formControlName="municipality" class="form-control form-control-sm col-sm-4" >
     </div>
+    <div>
+      <div class="form-group form-inline margin">
+        <label for="province" class="label text-sm-right">Province</label>
+        <select id="province" formControlName="province" class="form-control form-control-sm col-sm-4">
+          <option *ngFor="let province of provinces" [ngValue]="province">{{province}}</option>
+        </select>
+      </div>
+    </div>
     <div class="btn-group col-xs-3 registrationFormBtnGroup">
       <button type="submit" class="btn btn-success">Register</button>&nbsp;
       <button type="button" class="btn btn-link">Cancel</button>

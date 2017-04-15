@@ -4,6 +4,7 @@ import {Http, Headers, RequestOptions, Response} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
+import {Country} from "app/domain/Country";
 
 @Injectable()
 export class MemberService {
@@ -26,5 +27,10 @@ export class MemberService {
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
+  }
+
+  getCountries() {
+    return this.http.get('http://localhost:8080/countries')
+      .map((response:Response) => response.json() as Country[]);
   }
 }

@@ -48,6 +48,7 @@ DROP TABLE IF EXISTS Country;
 CREATE TABLE Country (
   ID INTEGER NOT NULL ,
   NAME VARCHAR(256),
+  CONTINENT VARCHAR(256),
   FLAG BYTEA,
   VERSION BIGINT,
   CREATED_ON TIMESTAMP NULL DEFAULT NULL,
@@ -55,5 +56,7 @@ CREATE TABLE Country (
   PRIMARY KEY(ID)
 );
 
-insert into Country(id, name, flag)
-values(1, 'BELGIUM', (select bytea_import('/home/peterdp/Desktop/flag_belgium.png')));
+delete from country;
+
+insert into Country(id, name, continent, flag)
+values(1, 'BELGIUM', 'EUROPE', (select bytea_import('/home/peterdp/Desktop/flag_belgium.png')));
