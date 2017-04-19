@@ -21,7 +21,6 @@ export class MemberRegistrationReactiveFormComponent implements OnInit {
 
   constructor(private geoDataService: GeoDataService, private fb: FormBuilder) {
     this.buildForm();
-    this.provinces = [new Province('Antwerpen'), new Province('Oost-Vlaanderen')];
   }
 
   ngOnInit() : void {
@@ -29,7 +28,7 @@ export class MemberRegistrationReactiveFormComponent implements OnInit {
   }
 
   getProvinces() {
-    // this.geoDataService.getProvinces().subscribe(provinces => this.provinces = provinces);
+    this.geoDataService.getProvinces().subscribe(provinces => this.provinces = provinces);
   }
 
   buildForm() {

@@ -16,6 +16,10 @@ export class GeoDataService {
 
   getProvinces() {
     return this.http.get(this.url.concat('provinces'))
-      .map((response:Response) => response.json() as Province[]);
+      .map(res => {
+        return res.json().map((name) => {
+          return new Province(name);
+        });
+      });
   }
 }
