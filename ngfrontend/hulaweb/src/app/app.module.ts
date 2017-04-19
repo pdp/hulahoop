@@ -13,6 +13,7 @@ import {MemberRegistrationFormComponent} from './member-registration-form/member
 import {Ng2BootstrapModule} from "ng2-bootstrap";
 import {MemberRegistrationReactiveFormComponent} from "./member-registration-form/member-registration-reactiveform.component";
 import {GeoDataService} from "./service/geodata.service";
+import {AutoCompleteModule} from 'primeng/primeng';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {GeoDataService} from "./service/geodata.service";
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    AutoCompleteModule,
     Ng2BootstrapModule.forRoot(),
     RouterModule.forRoot([
       {

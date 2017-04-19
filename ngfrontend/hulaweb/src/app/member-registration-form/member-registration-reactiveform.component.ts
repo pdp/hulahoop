@@ -1,11 +1,6 @@
-import {APP_INITIALIZER, Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {Member} from "../domain/Member";
-import {Account} from "../domain/Account";
-import {Body} from "../domain/Body";
-import {LocationContext} from "../domain/LocationContext";
-import {MemberService} from "../service/member.service";
-import {UUID} from "angular2-uuid";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Province} from "../domain/Province";
 import {GeoDataService} from "../service/geodata.service";
 
@@ -20,10 +15,13 @@ export class MemberRegistrationReactiveFormComponent implements OnInit {
   memberRegistrationForm: FormGroup;
 
   member : Member;
+  province : Province;
   provinces : Province[];
+  filteredProvinces: Province[];
 
   constructor(private geoDataService: GeoDataService, private fb: FormBuilder) {
     this.buildForm();
+    this.provinces = [new Province('Antwerpen'), new Province('Oost-Vlaanderen')];
   }
 
   ngOnInit() : void {
@@ -31,7 +29,7 @@ export class MemberRegistrationReactiveFormComponent implements OnInit {
   }
 
   getProvinces() {
-    this.geoDataService.getProvinces().subscribe(provinces => this.provinces = provinces);
+    // this.geoDataService.getProvinces().subscribe(provinces => this.provinces = provinces);
   }
 
   buildForm() {
@@ -41,7 +39,25 @@ export class MemberRegistrationReactiveFormComponent implements OnInit {
       name: ['', Validators.required],
       zipCode: ['', Validators.required],
       municipality: ['', Validators.required],
-      province: ['', Validators.required]
+      province: ['', Validators.required],
+      province2: ['', Validators.required]
     });
+  }
+
+  filterProvinces(event) {
+    let query = event.query;
+    this.filteredProvinces = this.filterProvince(query, this.provinces);
+
+  }
+
+  filterProvince(query, provinces:Province[]):Province[] {
+    let filtered : Province[] = [];
+    for(let i = 0; i < provinces.length; i++) {
+      let province = provinces[i];
+      if(province.name.toLowerCase().includes(query.toLowerCase())) {
+        filtered.push(province);
+      }
+    }
+    return filtered;
   }
 }
