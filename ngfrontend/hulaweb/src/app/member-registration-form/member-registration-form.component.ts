@@ -1,40 +1,61 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Member} from "../domain/Member";
-import {Account} from "../domain/Account";
-import {Body} from "../domain/Body";
-import {LocationContext} from "../domain/LocationContext";
-import {MemberService} from "../service/member.service";
-import {UUID} from "angular2-uuid";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Province} from "../domain/Province";
+import {GeoDataService} from "../service/geodata.service";
 
 @Component({
-  selector: 'member-registration-form',
+  selector: 'member-registration-reactiveform',
   templateUrl: './member-registration-form.component.html',
   styleUrls: ['./member-registration-form.component.css']
 })
 
-export class MemberRegistrationFormComponent  {
+export class MemberRegistrationFormComponent implements OnInit {
+
+  memberRegistrationForm: FormGroup;
 
   member : Member;
+  province : Province;
+  provinces : Province[];
+  filteredProvinces: Province[];
 
-  constructor(private memberService: MemberService) {
-    this.initializeMember();
+  constructor(private geoDataService: GeoDataService, private fb: FormBuilder) {
+    this.buildForm();
   }
 
-  sex = ['FEMALE', 'MALE'];
-
-  province = ['Antwerpen', 'Oost-Vlaanderen', 'West-Vlaanderen', 'Limburg', 'Vlaams-Brabant'];
-
-  submitted = false;
-
-  onSubmit() {
-    this.memberService.createMember(this.member);
-    this.initializeMember();
+  ngOnInit() : void {
+    this.getProvinces();
   }
 
-  initializeMember() {
-    this.member = new Member(UUID.UUID(), '', '', new Account('', ''), new LocationContext('', '', ''));
-    this.member.nickName = 'test';
-    this.member.genderRole = "TRANS_MALE";
-    this.member.body = new Body("MALE");
+  getProvinces() {
+    this.geoDataService.getProvinces().subscribe(provinces => this.provinces = provinces);
+  }
+
+  buildForm() {
+    this.memberRegistrationForm = this.fb.group({
+      userName: ['', Validators.required],
+      firstName: ['', Validators.required],
+      name: ['', Validators.required],
+      zipCode: ['', Validators.required],
+      municipality: ['', Validators.required],
+      province: ['', Validators.required]
+    });
+  }
+
+  filterProvinces(event) {
+    let query = event.query;
+    this.filteredProvinces = this.filterProvince(query, this.provinces);
+
+  }
+
+  filterProvince(query, provinces:Province[]):Province[] {
+    let filtered : Province[] = [];
+    for(let i = 0; i < provinces.length; i++) {
+      let province = provinces[i];
+      if(province.name.toLowerCase().includes(query.toLowerCase())) {
+        filtered.push(province);
+      }
+    }
+    return filtered;
   }
 }

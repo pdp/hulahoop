@@ -11,7 +11,6 @@ import {MemberService} from "./service/member.service";
 import {DashboardComponent} from "./dashboard.component";
 import {MemberRegistrationFormComponent} from './member-registration-form/member-registration-form.component';
 import {Ng2BootstrapModule} from "ng2-bootstrap";
-import {MemberRegistrationReactiveFormComponent} from "./member-registration-form/member-registration-reactiveform.component";
 import {GeoDataService} from "./service/geodata.service";
 import {AutoCompleteModule} from 'primeng/primeng';
 
@@ -21,8 +20,7 @@ import {AutoCompleteModule} from 'primeng/primeng';
     MembersComponent,
     HulawebComponent,
     DashboardComponent,
-    MemberRegistrationFormComponent,
-    MemberRegistrationReactiveFormComponent
+    MemberRegistrationFormComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +40,7 @@ import {AutoCompleteModule} from 'primeng/primeng';
       },
       {
         path: 'registration',
-        component: MemberRegistrationReactiveFormComponent
+        component: MemberRegistrationFormComponent
       },
       {
         path: '',
