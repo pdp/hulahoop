@@ -31,4 +31,5 @@ npm install node-sass sass-loader raw-loader --save
 update to angular 4
 npm install @angular/{common,compiler,compiler-cli,core,forms,http,platform-browser,platform-browser-dynamic,platform-server,router,animations}@latest typescript@latest --save
 
-
+intall Material design (ui components)
+npm install --save @angular/material@latest

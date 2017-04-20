@@ -24,15 +24,37 @@
     <div>
       <div class="form-group form-inline margin">
         <label class="label text-sm-right">Province</label>
-        <p-autoComplete id="province" formControlName="province" [suggestions]="filteredProvinces" field="name" (completeMethod)="filterProvinces($event)" [minLength]="1"></p-autoComplete>
+        <p-autoComplete id="province" formControlName="province" [dropdown]="true" [size]="37" [suggestions]="filteredProvinces" field="name" (completeMethod)="filterProvinces($event)" [minLength]="1">
+        </p-autoComplete>
       </div>
     </div>
     <div class="btn-group col-xs-3 registrationFormBtnGroup">
       <button type="submit" class="btn btn-success">Register</button>&nbsp;
       <button type="button" class="btn btn-warning">Cancel</button>
     </div>
+    <button md-button>WARN</button>
+    <button md-mini-fab>
+      <md-icon class="md-24">+</md-icon>
+    </button>
+    <button md-raised-button color="primary">PRIMARY</button>
+    <button md-raised-button color="accent">ACCENT</button>
+    <button md-raised-button color="warn">WARN</button>
+    <md-select placeholder="Province">
+      <md-option *ngFor="let province of provinces" [value]="province.name">{{ province.name }}</md-option>
+    </md-select>
+
+    <md-input-container>
+      <input type="text" mdInput [mdAutocomplete]="auto">
+    </md-input-container>
+
+    <md-autocomplete #auto="mdAutocomplete">
+      <md-option *ngFor="let province of provinces" [value]="province.name">
+        {{ province.name }}
+      </md-option>
+    </md-autocomplete>
   </form>
 <p>Form value: {{ memberRegistrationForm.value | json }}</p>
 <p>Form status: {{ memberRegistrationForm.status | json }}</p>
 </div>
+
 

@@ -21,6 +21,7 @@ export class MemberRegistrationFormComponent implements OnInit {
 
   constructor(private geoDataService: GeoDataService, private fb: FormBuilder) {
     this.buildForm();
+    this.getProvinces();
   }
 
   ngOnInit() : void {

@@ -10,9 +10,11 @@ import {MemberDetailComponent} from './member-detail/member-detail.component';
 import {MemberService} from "./service/member.service";
 import {DashboardComponent} from "./dashboard.component";
 import {MemberRegistrationFormComponent} from './member-registration-form/member-registration-form.component';
-import {Ng2BootstrapModule} from "ng2-bootstrap";
+import {Ng2BootstrapModule, SlideComponent} from "ng2-bootstrap";
 import {GeoDataService} from "./service/geodata.service";
 import {AutoCompleteModule} from 'primeng/primeng';
+import {MdButtonModule, MdCheckboxModule, MdSelectModule, MdAutocompleteModule, MdInputModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,10 +26,16 @@ import {AutoCompleteModule} from 'primeng/primeng';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
     AutoCompleteModule,
+    MdButtonModule,
+    MdCheckboxModule,
+    MdSelectModule,
+    MdAutocompleteModule,
+    MdInputModule,
     Ng2BootstrapModule.forRoot(),
     RouterModule.forRoot([
       {
