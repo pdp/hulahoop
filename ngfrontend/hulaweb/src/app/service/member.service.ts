@@ -5,6 +5,8 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import {Country} from "app/domain/Country";
+import {Observable} from "rxjs/Observable";
+import {MEMBERS} from "../DummyData";
 
 @Injectable()
 export class MemberService {
@@ -14,8 +16,9 @@ export class MemberService {
   constructor(private http: Http) {}
 
   getMembers() {
-    return this.http.get('http://localhost:8080/members')
-      .map((response:Response) => response.json() as Member[]);
+    return Observable.from([MEMBERS]);
+    // return this.http.get('http://localhost:8080/members')
+    //   .map((response:Response) => response.json() as Member[]);
   }
 
   createMember(member:Member) {

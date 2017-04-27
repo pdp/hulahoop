@@ -1,6 +1,6 @@
 <div class="container registrationForm">
   <h3>Member registration</h3>
-  <form [formGroup]="memberRegistrationForm" novalidate>
+  <form [formGroup]="memberRegistrationForm" (ngSubmit)="registerMember(memberRegistrationForm.value)">
     <div class="form-group form-inline margin">
       <label for="userName" class="label text-sm-right">Username</label>
       <input id="userName" type="text" formControlName="userName" class="form-control form-control-sm col-sm-4">
@@ -44,11 +44,11 @@
     </md-select>
 
     <md-input-container>
-      <input type="text" mdInput [mdAutocomplete]="auto">
+      <input mdInput [mdAutocomplete]="auto" >
     </md-input-container>
 
-    <md-autocomplete #auto="mdAutocomplete">
-      <md-option *ngFor="let province of provinces" [value]="province.name">
+    <md-autocomplete #auto="mdAutocomplete" >
+      <md-option *ngFor="let province of filteredProvincess | async" [value]="province.name">
         {{ province.name }}
       </md-option>
     </md-autocomplete>

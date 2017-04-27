@@ -41,6 +41,8 @@ public class Member extends DomainObject {
     @Column(name = "GENDER_ROLE")
     private GenderRole genderRole;
 
+    private Byte[] profileImage;
+
     @Embedded
     private Body body;
 
@@ -124,6 +126,14 @@ public class Member extends DomainObject {
 
     public void setBody(Body body) {
         this.body = body;
+    }
+
+    public Byte[] getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(Byte[] profileImage) {
+        this.profileImage = profileImage;
     }
 
     @Override

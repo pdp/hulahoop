@@ -1,3 +1,19 @@
 img {
   border: 1px solid lightgrey;
 }
+
+tr {
+  line-height: 10px;
+  min-height: 10px;
+  height: 10px;
+}
+
+.tableContainer {
+  margin-left: 30px;
+  width: 850px;
+}
+
+#memberFicheContainer {
+  width: 90%;
+  margin: 0 auto;
+}

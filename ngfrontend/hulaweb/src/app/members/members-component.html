@@ -10,16 +10,41 @@
     <!--</tr>-->
   <!--</tbody>-->
 <!--</table>-->
-<ul>
-  <li *ngFor="let country of countries">
-    <span>{{country.name}}</span>
-  <img class="image" width="30px" src="{{country.flag}}"/>
-  </li>
-</ul>
 
-<ul>
-  <li *ngFor="let member of members" (click)="onSelect(member)" class="list-group-item list-group-item-success">
-    <span>{{member.firstName}}</span>&nbsp;<span>{{member.name}}</span>
-  </li>
-  <member-detail [member]="member"></member-detail>
-</ul>
+<!--<p-dataTable [editable]="true" [value]="members" [lazy]="true" [rows]="10" [paginator]="true"-->
+             <!--[totalRecords]="totalRecords" (onLazyLoad)="loadMembers($event)"-->
+             <!--class="table table-striped table-hover">-->
+  <!--<p-header>List of Members</p-header>-->
+  <!--<p-column [filter]="true" field="firstName" header="Firstname"></p-column>-->
+  <!--<p-column  [filter]="true" field="name" header="Name"></p-column>-->
+<!--</p-dataTable>-->
+
+<div id="memberFicheContainer" *ngFor="let member of members">
+  <member-fiche [member]="member"></member-fiche>
+</div>
+
+<button md-button (click)="openDialog()">Open dialog</button>
+
+<div class="tableContainer">
+  <table class="table table-striped table-hover">
+    <thead>
+      <th>Name</th>
+      <th>Firstname</th>
+      <th>ZipCode</th>
+      <th>Municipality</th>
+      <th>Province</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let member of members">
+        <td>{{member.firstName}}</td>
+        <td>{{member.name}}</td>
+        <td>{{member.locationContext.zipCode}}</td>
+        <td>{{member.locationContext.municipality}}</td><td></td>
+        <td>{{member.locationContext.province}}</td>
+        <td><img (click)="viewMember()" src="app/resources/zoom-button.png"></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="alert alert-success" *ngIf="show"><strong>succes!</strong></div>
+</div>

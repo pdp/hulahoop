@@ -1,8 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {Member} from "../domain/Member";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Province} from "../domain/Province";
 import {GeoDataService} from "../service/geodata.service";
+import Any = jasmine.Any;
 
 @Component({
   selector: 'member-registration-reactiveform',
@@ -18,10 +19,13 @@ export class MemberRegistrationFormComponent implements OnInit {
   province : Province;
   provinces : Province[];
   filteredProvinces: Province[];
+  provinceCtrl: FormControl;
 
   constructor(private geoDataService: GeoDataService, private fb: FormBuilder) {
     this.buildForm();
     this.getProvinces();
+    this.provinceCtrl = new FormControl();
+    this.provinceCtrl.valueChanges.startWith(null).map(province => this.filteredProvinces = this.provinces).subscribe(r => {});
   }
 
   ngOnInit() : void {
@@ -31,6 +35,7 @@ export class MemberRegistrationFormComponent implements OnInit {
   getProvinces() {
     this.geoDataService.getProvinces().subscribe(provinces => this.provinces = provinces);
   }
+
 
   buildForm() {
     this.memberRegistrationForm = this.fb.group({
@@ -46,6 +51,7 @@ export class MemberRegistrationFormComponent implements OnInit {
   filterProvinces(event) {
     let query = event.query;
     this.filteredProvinces = this.filterProvince(query, this.provinces);
+    return this.filteredProvinces;
 
   }
 
@@ -58,5 +64,9 @@ export class MemberRegistrationFormComponent implements OnInit {
       }
     }
     return filtered;
+  }
+
+  registerMember(member: Any) {
+    console.log('register member', this.memberRegistrationForm.value);
   }
 }
