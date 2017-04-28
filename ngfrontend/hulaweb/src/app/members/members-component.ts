@@ -21,7 +21,7 @@ import {PROVINCES, BODIES} from "../DummyData";
 
 export class MembersComponent implements OnInit {
 
-  members : Member[];
+  members : Member[] = [];
   datasource: Member[] = [];
   totalRecords: number;
   member: Member;

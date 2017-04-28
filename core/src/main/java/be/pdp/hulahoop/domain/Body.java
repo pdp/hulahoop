@@ -27,6 +27,9 @@ public class Body {
     @Column(name = "WEIGHT")
     private short weight;
 
+    @Column(name = "AGE")
+    private byte age;
+
     //private Hair hair;
 
 
@@ -52,5 +55,13 @@ public class Body {
 
     public void setWeight(short weight) {
         this.weight = weight;
+    }
+
+    public byte getAge() {
+        return age;
+    }
+
+    public void setAge(byte age) {
+        this.age = age;
     }
 }

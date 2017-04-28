@@ -13,9 +13,9 @@ export const PROVINCES: Province[] = [
 ]
 
 export const BODIES: Body[] = [
-  new Body("MALE"),
-  new Body("FEMALE"),
-  new Body("TRANSGENDER")
+  new Body("MALE", 172,72,41),
+  new Body("FEMALE", 172,72,41),
+  new Body("TRANSGENDER", 172,72,41)
 ]
 
   export const MEMBERS: Member[] = [

@@ -11,14 +11,16 @@ import {MEMBERS} from "../DummyData";
 @Injectable()
 export class MemberService {
 
+  page: number = 0;
+
   private url = 'http://localhost:8080/createmember';
 
   constructor(private http: Http) {}
 
   getMembers() {
-    return Observable.from([MEMBERS]);
-    // return this.http.get('http://localhost:8080/members')
-    //   .map((response:Response) => response.json() as Member[]);
+    // return Observable.from([MEMBERS]);
+    return this.http.get('http://localhost:8080/members/?page=0')
+      .map((response:Response) => response.json() as Member[]);
   }
 
   createMember(member:Member) {

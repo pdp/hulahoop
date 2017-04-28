@@ -4,6 +4,7 @@ import be.pdp.hulahoop.dao.GeographicalDataRepository;
 import be.pdp.hulahoop.dao.MemberRepository;
 import be.pdp.hulahoop.domain.Body;
 import be.pdp.hulahoop.domain.GeographicalData;
+import be.pdp.hulahoop.domain.LocationContext;
 import be.pdp.hulahoop.domain.Member;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -70,7 +71,13 @@ public class HulahoopApplication {
 			body.setWeight((short) 85);
 			body.setLength((short) 172);
 			body.setSex(Sex.MALE);
+			body.setAge((byte)18);
 			member.setBody(body);
+			LocationContext locationContext = new LocationContext();
+			locationContext.setZipCode("2050");
+			locationContext.setMunicipality("ANTWERPEN");
+			locationContext.setProvince("ANTWERPEN");
+			member.setLocationContext(locationContext);
 			memberRepository.save(member);
 
 			member = new Member();
@@ -82,7 +89,13 @@ public class HulahoopApplication {
 			body.setWeight((short) 90);
 			body.setLength((short) 180);
 			body.setSex(Sex.FEMALE);
+			body.setAge((byte)28);
 			member.setBody(body);
+			locationContext = new LocationContext();
+			locationContext.setZipCode("2050");
+			locationContext.setMunicipality("ANTWERPEN");
+			locationContext.setProvince("ANTWERPEN");
+			member.setLocationContext(locationContext);
 			memberRepository.save(member);
 
 			 member = new Member();
@@ -94,7 +107,13 @@ public class HulahoopApplication {
 			body.setWeight((short) 85);
 			body.setLength((short) 172);
 			body.setSex(Sex.MALE);
+			body.setAge((byte)38);
 			member.setBody(body);
+			locationContext = new LocationContext();
+			locationContext.setZipCode("2050");
+			locationContext.setMunicipality("ANTWERPEN");
+			locationContext.setProvince("ANTWERPEN");
+			member.setLocationContext(locationContext);
 			memberRepository.save(member);
 
 			 member = new Member();
@@ -106,7 +125,13 @@ public class HulahoopApplication {
 			body.setWeight((short) 85);
 			body.setLength((short) 172);
 			body.setSex(Sex.MALE);
+			body.setAge((byte)48);
 			member.setBody(body);
+			locationContext = new LocationContext();
+			locationContext.setZipCode("2050");
+			locationContext.setMunicipality("ANTWERPEN");
+			locationContext.setProvince("ANTWERPEN");
+			member.setLocationContext(locationContext);
 			memberRepository.save(member);
 
 			member = new Member();
@@ -118,6 +143,12 @@ public class HulahoopApplication {
 			body.setWeight((short) 85);
 			body.setLength((short) 172);
 			body.setSex(Sex.MALE);
+			body.setAge((byte)58);
+			locationContext = new LocationContext();
+			locationContext.setZipCode("2050");
+			locationContext.setMunicipality("ANTWERPEN");
+			locationContext.setProvince("ANTWERPEN");
+			member.setLocationContext(locationContext);
 			member.setBody(body);
 			memberRepository.save(member);
 
@@ -130,7 +161,13 @@ public class HulahoopApplication {
 			body.setWeight((short) 85);
 			body.setLength((short) 172);
 			body.setSex(Sex.MALE);
+			body.setAge((byte)28);
 			member.setBody(body);
+			locationContext = new LocationContext();
+			locationContext.setZipCode("2050");
+			locationContext.setMunicipality("ANTWERPEN");
+			locationContext.setProvince("ANTWERPEN");
+			member.setLocationContext(locationContext);
 			memberRepository.save(member);
 
 			List<Member> members = memberRepository.findAll();

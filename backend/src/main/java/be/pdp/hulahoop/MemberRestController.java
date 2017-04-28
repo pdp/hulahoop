@@ -3,6 +3,10 @@ package be.pdp.hulahoop;
 import be.pdp.hulahoop.dao.MemberRepository;
 import be.pdp.hulahoop.domain.Member;
 import com.google.common.collect.Lists;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,11 +28,19 @@ public class MemberRestController {
     @Inject
     private MemberRepository memberRepository;
 
-    @GetMapping("/members")
+    @GetMapping(value = "/members")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity getMembers() {
-        List<Member> members =  memberRepository.findAll();
+    public ResponseEntity getMembers(@RequestParam("page") int page) {
 
+        Sort sort = new Sort(new Sort.Order(Sort.Direction.DESC, "lastLogon"));
+
+        Pageable pageable = new PageRequest(page, 5, sort);
+
+        Page<Member> membersByLastLogon = memberRepository.findAll(pageable);
+        List<Member> members = Lists.newArrayList();
+        if(membersByLastLogon.getContent() != null) {
+            members = membersByLastLogon.getContent();
+        }
         return new ResponseEntity(members.toArray(), HttpStatus.OK);
     }
 

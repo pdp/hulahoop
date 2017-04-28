@@ -1,6 +1,7 @@
 import {Account} from "./Account";
 import {LocationContext} from "./LocationContext";
 import {Body} from "./Body";
+import {GenderRole} from "./GenderRole";
 
 export class Member {
   membershipNumber: string;
@@ -9,7 +10,7 @@ export class Member {
   account: Account;
   locationContext : LocationContext;
   nickName: string;
-  genderRole: string;
+  genderRole: GenderRole;
   sex: string;
   body: Body;
   picture: string;

@@ -19,9 +19,9 @@ tr {
 }
 
 #memberFiltersPanel{
-  padding-top:50px;
-  padding-bottom:50px;
-  border:solid 1px beige;
+  margin-top:20px;
+  margin-bottom:20px;
+  background-color: whitesmoke;
 }
 
 md-select {

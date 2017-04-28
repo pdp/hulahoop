@@ -2,16 +2,14 @@ package be.pdp.hulahoop.domain;
 
 import be.pdp.hulahoop.DomainObject;
 import be.pdp.hulahoop.GenderRole;
-import be.pdp.hulahoop.LocationContext;
-import be.pdp.hulahoop.Sex;
 import com.google.common.base.Objects;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.UUID;
 
-import static java.time.LocalDate.*;
+import static java.time.LocalDateTime.now;
+
 
 /**
  * Created by peterdp on 19.03.17.
@@ -41,10 +39,18 @@ public class Member extends DomainObject {
     @Column(name = "GENDER_ROLE")
     private GenderRole genderRole;
 
+    @Column(name = "PROFILE_IMAGE")
     private Byte[] profileImage;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "LAST_LOGON")
+    private Date lastLogon;
 
     @Embedded
     private Body body;
+
+    @Embedded
+    private LocationContext locationContext;
 
     public Member() {
         String currentYear = String.valueOf(now().getYear());
@@ -134,6 +140,14 @@ public class Member extends DomainObject {
 
     public void setProfileImage(Byte[] profileImage) {
         this.profileImage = profileImage;
+    }
+
+    public LocationContext getLocationContext() {
+        return locationContext;
+    }
+
+    public void setLocationContext(LocationContext locationContext) {
+        this.locationContext = locationContext;
     }
 
     @Override
