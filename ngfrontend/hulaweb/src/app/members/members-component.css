@@ -17,3 +17,13 @@ tr {
   width: 90%;
   margin: 0 auto;
 }
+
+#memberFiltersPanel{
+  padding-top:50px;
+  padding-bottom:50px;
+  border:solid 1px beige;
+}
+
+md-select {
+  width:200px;
+}

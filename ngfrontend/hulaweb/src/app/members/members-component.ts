@@ -9,6 +9,8 @@ import {Country} from "../domain/Country";
 import {LazyLoadEvent} from "primeng/components/common/api";
 import {MdDialog, MdDialogRef} from "@angular/material";
 import {DialogContent} from "./member-dialog-component";
+import {Province} from "../domain/Province";
+import {PROVINCES, BODIES} from "../DummyData";
 
 @Component({
   selector: 'members',
@@ -27,6 +29,8 @@ export class MembersComponent implements OnInit {
   countries : Country[];
   show: boolean = false;
   lastDialogResult: string;
+  provinces: Province[] = PROVINCES;
+  genders: Body[] = BODIES;
 
   @Output() passMember: EventEmitter<Member> = new EventEmitter<Member>();
 

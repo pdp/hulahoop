@@ -1,3 +1,22 @@
+<section id="memberFicheContainer">
+  <div id="memberFiltersPanel">
+      <md-select placeholder="Gender">
+        <md-option *ngFor="let gender of genders" [value]="gender.sex">
+          {{ gender.sex }}
+        </md-option>
+      </md-select>
+
+      <md-select placeholder="Regio">
+        <md-option *ngFor="let province of provinces" [value]="province.name">
+          {{ province.name }}
+        </md-option>
+      </md-select>
+  </div>
+  <div *ngFor="let member of members">
+    <member-fiche [member]="member"></member-fiche>
+  </div>
+</section>
+
 <!--<table class="table table-responsive">-->
   <!--<tbody>-->
     <!--<tr>-->
@@ -19,32 +38,29 @@
   <!--<p-column  [filter]="true" field="name" header="Name"></p-column>-->
 <!--</p-dataTable>-->
 
-<div id="memberFicheContainer" *ngFor="let member of members">
-  <member-fiche [member]="member"></member-fiche>
-</div>
 
-<button md-button (click)="openDialog()">Open dialog</button>
+<!--<button md-button (click)="openDialog()">Open dialog</button>-->
 
-<div class="tableContainer">
-  <table class="table table-striped table-hover">
-    <thead>
-      <th>Name</th>
-      <th>Firstname</th>
-      <th>ZipCode</th>
-      <th>Municipality</th>
-      <th>Province</th>
-      <th>Actions</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let member of members">
-        <td>{{member.firstName}}</td>
-        <td>{{member.name}}</td>
-        <td>{{member.locationContext.zipCode}}</td>
-        <td>{{member.locationContext.municipality}}</td><td></td>
-        <td>{{member.locationContext.province}}</td>
-        <td><img (click)="viewMember()" src="app/resources/zoom-button.png"></td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="alert alert-success" *ngIf="show"><strong>succes!</strong></div>
-</div>
+<!--<div class="tableContainer">-->
+  <!--<table class="table table-striped table-hover">-->
+    <!--<thead>-->
+      <!--<th>Name</th>-->
+      <!--<th>Firstname</th>-->
+      <!--<th>ZipCode</th>-->
+      <!--<th>Municipality</th>-->
+      <!--<th>Province</th>-->
+      <!--<th>Actions</th>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+      <!--<tr *ngFor="let member of members">-->
+        <!--<td>{{member.firstName}}</td>-->
+        <!--<td>{{member.name}}</td>-->
+        <!--<td>{{member.locationContext.zipCode}}</td>-->
+        <!--<td>{{member.locationContext.municipality}}</td><td></td>-->
+        <!--<td>{{member.locationContext.province}}</td>-->
+        <!--<td><img (click)="viewMember()" src="app/resources/zoom-button.png"></td>-->
+      <!--</tr>-->
+    <!--</tbody>-->
+  <!--</table>-->
+  <!--<div class="alert alert-success" *ngIf="show"><strong>succes!</strong></div>-->
+<!--</div>-->

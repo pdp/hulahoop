@@ -20,6 +20,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgbModalModule} from "@ng-bootstrap/ng-bootstrap";
 import {DialogContent} from "./members/member-dialog-component";
 import {MemberFicheComponent} from "./member-fiche/member-fiche.component";
+import {BannerComponent} from "./banner/banner.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MemberFicheComponent} from "./member-fiche/member-fiche.component";
     DashboardComponent,
     MemberRegistrationFormComponent,
     DialogContent,
-    MemberFicheComponent
+    MemberFicheComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,
