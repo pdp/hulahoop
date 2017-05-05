@@ -24,7 +24,8 @@ export class MemberService {
   }
 
   createMember(member:Member) {
-  const headers = new Headers({'Content-Type': 'application/json'});
+    console.log('creating member ', member);
+    const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(this.url, JSON.stringify(member), {headers})
       .subscribe(r=>{});
   }

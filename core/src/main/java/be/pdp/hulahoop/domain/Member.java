@@ -39,8 +39,8 @@ public class Member extends DomainObject {
     @Column(name = "GENDER_ROLE")
     private GenderRole genderRole;
 
-    @Column(name = "PROFILE_IMAGE")
-    private Byte[] profileImage;
+    @Column(name = "PICTURE")
+    private String picture;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "LAST_LOGON")
@@ -134,12 +134,12 @@ public class Member extends DomainObject {
         this.body = body;
     }
 
-    public Byte[] getProfileImage() {
-        return profileImage;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setProfileImage(Byte[] profileImage) {
-        this.profileImage = profileImage;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public LocationContext getLocationContext() {

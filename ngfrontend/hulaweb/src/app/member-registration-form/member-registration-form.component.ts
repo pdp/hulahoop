@@ -3,7 +3,13 @@ import {Member} from "../domain/Member";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Province} from "../domain/Province";
 import {GeoDataService} from "../service/geodata.service";
-import Any = jasmine.Any;
+import {Http, RequestOptions} from "@angular/http";
+import {Observable} from "rxjs/Observable";
+import {MemberService} from "../service/member.service";
+import {LocationContext} from "../domain/LocationContext";
+import {Account} from "../domain/Account";
+import {UUID} from "angular2-uuid";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'member-registration-reactiveform',
@@ -18,14 +24,11 @@ export class MemberRegistrationFormComponent implements OnInit {
   member : Member;
   province : Province;
   provinces : Province[];
-  filteredProvinces: Province[];
-  provinceCtrl: FormControl;
 
-  constructor(private geoDataService: GeoDataService, private fb: FormBuilder) {
+  constructor(private geoDataService: GeoDataService, private memberService: MemberService, private fb: FormBuilder, private domSanitizer:DomSanitizer) {
     this.buildForm();
     this.getProvinces();
-    this.provinceCtrl = new FormControl();
-    this.provinceCtrl.valueChanges.startWith(null).map(province => this.filteredProvinces = this.provinces).subscribe(r => {});
+    this.member = new Member('', '', '', '', '', new Account('', ''), new LocationContext('', '', ''), '');
   }
 
   ngOnInit() : void {
@@ -49,46 +52,31 @@ export class MemberRegistrationFormComponent implements OnInit {
     });
   }
 
-  filterProvinces(event) {
-    let query = event.query;
-    this.filteredProvinces = this.filterProvince(query, this.provinces);
-    return this.filteredProvinces;
+  registerMember(member: Member) {
+    let formValue = this.memberRegistrationForm.value;
 
-  }
 
-  filterProvince(query, provinces:Province[]):Province[] {
-    let filtered : Province[] = [];
-    for(let i = 0; i < provinces.length; i++) {
-      let province = provinces[i];
-      if(province.name.toLowerCase().includes(query.toLowerCase())) {
-        filtered.push(province);
-      }
-    }
-    return filtered;
-  }
+    // this.member.firstName = formValue['firstName'];
+    // this.member.nickName = formValue['userName'];
+    // this.member.name = formValue['name'];
+    // this.member.locationContext.zipCode = formValue['zipCode'];
+    // this.member.locationContext.municipality = formValue['municipality'];
+    // this.member.locationContext.province = formValue['province'];
 
-  registerMember(member: Any) {
-    console.log('register member', this.memberRegistrationForm.value);
+    this.memberService.createMember(new Member(UUID.UUID(), "Peter", "De Permentier", "test", new Account("peterdp", "pass1"), new LocationContext("2050", "ANTWERPEN", "ANTWERPEN"),35, this.member.picture));
   }
 
   uploadProfilePicture(event) {
-    console.log('file upload event ', event);
-    // let fileList: FileList = event.target.files;
-    // if(fileList.length > 0) {
-    //   let file: File = fileList[0];
-    //   let formData:FormData = new FormData();
-    //   formData.append('uploadFile', file, file.name);
-    //   let headers = new Headers();
-    //   headers.append('Content-Type', 'multipart/form-data');
-    //   headers.append('Accept', 'application/json');
-    //   let options = new RequestOptions({ headers: headers });
-    //   this.http.post(`${this.apiEndPoint}`, formData, options)
-    //     .map(res => res.json())
-    //     .catch(error => Observable.throw(error))
-    //     .subscribe(
-    //       data => console.log('success'),
-    //       error => console.log(error)
-    //     )
-    // }
+    let fileReader = new FileReader();
+
+    fileReader.onload = (e) => {
+      this.member.picture = fileReader.result;
+    }
+
+    fileReader.readAsDataURL(event.target.files[0]);
+  }
+
+  sanitizeUrl(url:string) {
+    return this.domSanitizer.bypassSecurityTrustUrl(url);
   }
 }
